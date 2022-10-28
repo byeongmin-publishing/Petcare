@@ -6,7 +6,7 @@ $(".option1").change(function(){
 
     $.ajax({
         type : "GET",
-        url:"select-data.json",
+        url:"../js/select-data.json",
         dataType: "Json",       //제이슨 연결
         success:function(data){     //성공했을때
 
