@@ -1,4 +1,4 @@
-//option1 변경 이벤트
+/*//option1 변경 이벤트*/
 
 $(".option1").change(function(){
 
