@@ -1,0 +1,19 @@
+if($(".search").is('.EAAC09, .EAAA00')){
+
+    $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultEYAS");
+    $(".resultEYAS").find(".result-title").text(data.result.resultEYAS.resultTitle[0]);
+    $(".resultEYAS").find(".title-sub").text(data.result.resultEYAS.titleSub[0]);
+    $(".resultEYAS").find(".result-img").attr("src", data.result.resultEYAS.resultImg[0]);
+    $(".resultEYAS").find(".symptomA li").text(data.result.resultEYAS.symptomA[0]);
+    for(var count = 0; count < data.result.resultEYAS.symptomB.length; count++){
+        $(".resultEYAS .symptomB ul").append('<li></li>');
+    };
+    $(".symptomB li").each(function(){
+        i = $(this).index();
+        $(".resultEYAS").find(".symptomB li").eq(i).text(data.result.resultEYAS.symptomB[i]);
+    });
+    $(".resultEYAS").find(".symptomPart li").text(data.result.resultEYAS.symptomPart[0]);
+    $(".resultEYAS").find(".symptomText li").text(data.result.resultEYAS.symptomText[0]);
+    $(".resultEYAS").find(".symptomMedical li").text(data.result.resultEYAS.symptomMedical[0]);
+
+};

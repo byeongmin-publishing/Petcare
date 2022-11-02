@@ -1,7 +1,7 @@
 {   
     "result":{
 
-        "resultAA":{
+        "resultEAAA":{
             "resultTitle":[
                 "귀염증"
             ],
@@ -32,7 +32,7 @@
             ]
         },
 
-        "resultAB":
+        "resultEAAB":
         {
             "resultTitle":[
                 "진드기 감염"
@@ -61,7 +61,7 @@
             ]
         },
 
-        "resultAC":
+        "resultEAAC":
         {
             "resultTitle":[
                 "내이염"
@@ -92,7 +92,7 @@
             ]
         },
 
-        "resultAD":
+        "resultEAAD":
         {
             "resultTitle":[
                 "전정장애"
@@ -122,7 +122,7 @@
             ]
         },
 
-        "resultAE":
+        "resultEAAE":
         {
             "resultTitle":[
                 "종양"
@@ -151,7 +151,7 @@
             ]
         },
 
-        "resultAF":
+        "resultEAAF":
         {
             "resultTitle":[
                 "중이염"
@@ -181,7 +181,7 @@
             ]
         },
 
-        "resultAG":
+        "resultEAAG":
         {
             "resultTitle":[
                 "중이염"
@@ -212,7 +212,7 @@
             ]
         },
 
-        "resultAH":
+        "resultEAAH":
         {
             "resultTitle":[
                 "외이염"
@@ -244,7 +244,7 @@
             ]
         },
 
-        "resultAI":
+        "resultEAAI":
         {
             "resultTitle":[
                 "개선충증"
@@ -276,7 +276,7 @@
             ]
         },
 
-        "resultAJ":
+        "resultEAAJ":
         {
             "resultTitle":[
                 "마라세티아 감염증"
@@ -309,7 +309,7 @@
             ]
         },
 
-        "resultAK":
+        "resultEAAK":
         {
             "resultTitle":[
                 "이혈종"

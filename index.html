@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/index.css" type="text/css" rel="stylesheet">
     <link href="css/info.css" type="text/css" rel="stylesheet">
+    <link href="css/info-pc.css" type="text/css" rel="stylesheet" media="(max-width:1200px)">
+    <link href="css/info-tablet.css" type="text/css" rel="stylesheet" media="(max-width:768px)">
+    <link href="css/info-mobile.css" type="text/css" rel="stylesheet" media="(max-width:480px)">
     <title>PetCare</title>
 </head>
 <body>
@@ -14,7 +17,19 @@
                 <img src="img/petcare-logo.svg" alt="petcare">
             </div>
             <div class="select-wrap">
-                <p class="option1-text">반려동물의 증상을 선택해주세요</p>
+                <div class="title-wrap">
+                    <p class="option1-text">반려동물의 증상을 선택해주세요</p>
+                    <div class="question-wrap">
+                        <div class="question">
+                            <img src="img/petcare-question.png" alt="사이트 정보">
+                            <div class="qustion-text">
+                                <p>Petcare Plus는 선택하신 증상을 기준으로 반려견의 질병리스트를 예측하는 사이트 입니다.</p>
+                                <span>보다 정확한 진단은 병원에 방문하셔서 전문의의 진단을 받아 보시길 바랍니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="option1-wrap">
                     <select name="option1" class="option1">
                         <option value="0" disabled selected>이상부위</option>
@@ -22,16 +37,10 @@
                         <option value="2">눈</option>
                         <option value="3">코</option>
                         <option value="4">입</option>
-                        <option value="5">다리</option>
-                        <option value="6">피부</option>
+                        <option value="5">피부</option>
+                        <option value="6">다리</option>
                         <option value="7">생식기</option>
                         <option value="8">소화기</option>
-                        <option value="9">기관지</option>
-                        <option value="10">소변</option>
-                        <option value="11">체온</option>
-                        <option value="12">행동</option>
-                        <option value="13">음식섭취</option>
-                        <option value="14">기타</option>
                     </select>
                     <select name="option2" class="option2">
                         <option value="0" disabled selected>이상부위를 먼저 선택해주세요</option>
@@ -52,15 +61,6 @@
                     </div>
                 </div>
                 <a href="#" class="search">증상 찾기</a>
-            </div>
-        </div>
-        <div class="question-wrap">
-            <div class="question">
-                <img src="img/petcare-question.png" alt="사이트 정보">
-                <div class="qustion-text">
-                    <p>Petcare Plus는 선택하신 증상을 기준으로 질병리스트를 예측하는 사이트 입니다.</p>
-                    <span>보다 정확한 진단은 병원에 방문하셔서 전문의의 진단을 받아 보시길 바랍니다.</span>
-                </div>
             </div>
         </div>
     </div>
@@ -85,14 +85,14 @@
                         <img src="img/petcare-info-logo.png" alt="증상 부위" class="result-img">
                         <div class="result-text-wrap">
                             <div class="symptomA">
-                                <span>증상 A:</span>
+                                <span>증상 A :</span>
                                 <ul>
                                     <li></li>
                                 </ul>
                             </div>
 
                             <div class="symptomB">
-                                <span>증상 B:</span>
+                                <span>증상 B :</span>
                                 <ul>
                                     <li></li>
                                 </ul>

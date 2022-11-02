@@ -23,6 +23,7 @@
 }
 #search .inner{
     width: 1200px;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     gap: 80px;
@@ -141,11 +142,12 @@ li{
     width: 350px;
     height: fit-content;
 }
-span{
-    width: 80px;
+#search span{
+    width: 100px;
     font-size: 18px;
     font-weight: 700;
     color: #69f;
+    white-space: nowrap;
 }
 .back{
     width: 240px;
