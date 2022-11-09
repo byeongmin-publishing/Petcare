@@ -5,6 +5,11 @@
     src: url('../font/CBRegular.ttf');
 }
 
+@font-face {
+    font-family: "result";
+    src: url('../font/KoPubWorldDotumLight.ttf');
+}
+
 
 
 /* reset */
