@@ -1,15 +1,16 @@
-/*//option1 변경 이벤트*/
+//option1 변경 이벤트
 
 $(".option1").change(function(){
 
     let searchBtn = $(".search");       //기존 input에서 체크를 하고 항목을 바꿨을때 초기화
     searchBtn.removeClass();        //증상찾기 초기화
     searchBtn.addClass("search");       //증상찾기 초기화
+    arr.splice(0);      //증상 코드 초기화
     let option1Index = $(this).val();       //option2 이벤트를 위한 option1 value 가져오기
 
     $.ajax({
         type : "GET",
-        url:"js/select-data.json",
+        url:"../js/select-data.json",
         dataType: "Json",       //제이슨 연결
         success:function(data){     //성공했을때
 
@@ -38,8 +39,9 @@ $(".option1").change(function(){
 
                     searchBtn.removeClass();        //증상찾기 초기화
                     searchBtn.addClass("search");       //증상찾기 초기화
-                    $(".main-logo").css("width", "150px");      //로고 작아지기
+                    arr.splice(0);      //증상 코드 초기화
                     let option2Index = $(this).val();       //옵션2의 번호 구하기
+                    $(".main-logo").css("width", "150px");      //로고 작아지기
 
                     if(option2Index == 1){      //option2에서 첫번째 항목 눌렀을 때
                         $(".option3-checkbox").remove();    
@@ -90,6 +92,7 @@ $(".option1").change(function(){
                         });
 
                     };
+                    // $(".option3-wrap").css("height", "200px");
                     $(".option3-wrap").stop().slideDown(500);
                 });
 
@@ -334,21 +337,21 @@ $(".option1").change(function(){
 
                     if(option2Index == 1){
                         $(".option3-checkbox").remove();    
-                        for(var count = 0; count < data.nose.option2A.option3.length; count++){
+                        for(var count = 0; count < data.mouse.option2A.option3.length; count++){
                             $(".option3").append('<div class="option3-checkbox"></div>');
                         };
                         $(".option3-checkbox").each(function(){
                             i = $(this).index();
-                            $(".option3-checkbox").eq(i).append('<input type="checkbox" id="'+data.nose.option2A.for[i]+'"><label for="'+data.nose.option2A.for[i]+'"></label>');
-                            $(".option3-checkbox").eq(i).children("label").text(data.nose.option2A.option3[i]);
-                            $(".option3-checkbox").eq(i).attr("id",data.nose.option2A.code[i]);
+                            $(".option3-checkbox").eq(i).append('<input type="checkbox" id="'+data.mouse.option2A.for[i]+'"><label for="'+data.mouse.option2A.for[i]+'"></label>');
+                            $(".option3-checkbox").eq(i).children("label").text(data.mouse.option2A.option3[i]);
+                            $(".option3-checkbox").eq(i).attr("id",data.mouse.option2A.code[i]);
                         });
 
                     }else if(option2Index == 2){
 
                         $(".option3-checkbox").remove();
 
-                        for(var count = 0; count < data.nose.option2B.option3.length; count++){
+                        for(var count = 0; count < data.mouse.option2B.option3.length; count++){
 
                             $(".option3").append('<div class="option3-checkbox"></div>');
                         };
@@ -356,9 +359,9 @@ $(".option1").change(function(){
                         $(".option3-checkbox").each(function(){
 
                             i = $(this).index();
-                            $(".option3-checkbox").eq(i).append('<input type="checkbox" id="'+data.nose.option2B.for[i]+'"><label for="'+data.nose.option2B.for[i]+'"></label>');
-                            $(".option3-checkbox").eq(i).children("label").text(data.nose.option2B.option3[i]);
-                            $(".option3-checkbox").eq(i).attr("id",data.nose.option2B.code[i]);
+                            $(".option3-checkbox").eq(i).append('<input type="checkbox" id="'+data.mouse.option2B.for[i]+'"><label for="'+data.mouse.option2B.for[i]+'"></label>');
+                            $(".option3-checkbox").eq(i).children("label").text(data.mouse.option2B.option3[i]);
+                            $(".option3-checkbox").eq(i).attr("id",data.mouse.option2B.code[i]);
 
                         });
 
@@ -366,7 +369,7 @@ $(".option1").change(function(){
 
                         $(".option3-checkbox").remove();
                         
-                        for(var count = 0; count < data.nose.option2C.option3.length; count++){
+                        for(var count = 0; count < data.mouse.option2C.option3.length; count++){
 
                             $(".option3").append('<div class="option3-checkbox"></div>');
                         };
@@ -374,9 +377,9 @@ $(".option1").change(function(){
                         $(".option3-checkbox").each(function(){
 
                             i = $(this).index();
-                            $(".option3-checkbox").eq(i).append('<input type="checkbox" id="'+data.nose.option2C.for[i]+'"><label for="'+data.nose.option2C.for[i]+'"></label>');
-                            $(".option3-checkbox").eq(i).children("label").text(data.nose.option2C.option3[i]);
-                            $(".option3-checkbox").eq(i).attr("id",data.nose.option2C.code[i]);
+                            $(".option3-checkbox").eq(i).append('<input type="checkbox" id="'+data.mouse.option2C.for[i]+'"><label for="'+data.mouse.option2C.for[i]+'"></label>');
+                            $(".option3-checkbox").eq(i).children("label").text(data.mouse.option2C.option3[i]);
+                            $(".option3-checkbox").eq(i).attr("id",data.mouse.option2C.code[i]);
 
                         });
 
@@ -763,7 +766,7 @@ $(".search").click(function(e){ //눌렀을때
         $.ajax({
 
             type : "GET",
-            url:"js/result-data.json",
+            url:"../js/result-data.json",
             dataType: "Json",  
 
 
@@ -1735,7 +1738,7 @@ $(".search").click(function(e){ //눌렀을때
                     
                     };
 
-                    if($(".search").is('.EAAC03, .EAAA11, .EAAC12, .EAAA13')){
+                    if($(".search").is('.NOAE03, .NOAE11, .NOAE12, .NOAE13')){
 
                         $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultNOAQ");
                         $(".resultNOAQ").find(".result-title").text(data.result.resultNOAQ.resultTitle[0]);
@@ -2340,6 +2343,798 @@ $(".search").click(function(e){ //눌렀을때
                         $(".resultSKAV").find(".symptomPart li").text(data.result.resultSKAV.symptomPart[0]);
                         $(".resultSKAV").find(".symptomText li").text(data.result.resultSKAV.symptomText[0]);
                         $(".resultSKAV").find(".symptomMedical li").text(data.result.resultSKAV.symptomMedical[0]);
+                    
+                    };
+
+
+
+
+
+                    if($(".search").is('.LEAA00, .LEAA01, .LEAA02, .LEAA03, .LEAA04, .LEAA05')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAA");
+                        $(".resultLEAA").find(".result-title").text(data.result.resultLEAA.resultTitle[0]);
+                        $(".resultLEAA").find(".title-sub").text(data.result.resultLEAA.titleSub[0]);
+                        $(".resultLEAA").find(".result-img").attr("src", data.result.resultLEAA.resultImg[0]);
+                        $(".resultLEAA").find(".symptomA li").text(data.result.resultLEAA.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAA.symptomB.length; count++){
+                            $(".resultLEAA .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAA").find(".symptomB li").eq(i).text(data.result.resultLEAA.symptomB[i]);
+                        });
+                        $(".resultLEAA").find(".symptomPart li").text(data.result.resultLEAA.symptomPart[0]);
+                        $(".resultLEAA").find(".symptomText li").text(data.result.resultLEAA.symptomText[0]);
+                        $(".resultLEAA").find(".symptomMedical li").text(data.result.resultLEAA.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAA06, .LEAA07, .LEAA08')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAB");
+                        $(".resultLEAB").find(".result-title").text(data.result.resultLEAB.resultTitle[0]);
+                        $(".resultLEAB").find(".title-sub").text(data.result.resultLEAB.titleSub[0]);
+                        $(".resultLEAB").find(".result-img").attr("src", data.result.resultLEAB.resultImg[0]);
+                        $(".resultLEAB").find(".symptomA li").text(data.result.resultLEAB.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAB.symptomB.length; count++){
+                            $(".resultLEAB .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAB").find(".symptomB li").eq(i).text(data.result.resultLEAB.symptomB[i]);
+                        });
+                        $(".resultLEAB").find(".symptomPart li").text(data.result.resultLEAB.symptomPart[0]);
+                        $(".resultLEAB").find(".symptomText li").text(data.result.resultLEAB.symptomText[0]);
+                        $(".resultLEAB").find(".symptomMedical li").text(data.result.resultLEAB.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAA09, .LEAA10, .LEAA11')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAC");
+                        $(".resultLEAC").find(".result-title").text(data.result.resultLEAC.resultTitle[0]);
+                        $(".resultLEAC").find(".title-sub").text(data.result.resultLEAC.titleSub[0]);
+                        $(".resultLEAC").find(".result-img").attr("src", data.result.resultLEAC.resultImg[0]);
+                        $(".resultLEAC").find(".symptomA li").text(data.result.resultLEAC.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAC.symptomB.length; count++){
+                            $(".resultLEAC .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAC").find(".symptomB li").eq(i).text(data.result.resultLEAC.symptomB[i]);
+                        });
+                        $(".resultLEAC").find(".symptomPart li").text(data.result.resultLEAC.symptomPart[0]);
+                        $(".resultLEAC").find(".symptomText li").text(data.result.resultLEAC.symptomText[0]);
+                        $(".resultLEAC").find(".symptomMedical li").text(data.result.resultLEAC.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAA03, .LEAA09, .LEAA12')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAD");
+                        $(".resultLEAD").find(".result-title").text(data.result.resultLEAD.resultTitle[0]);
+                        $(".resultLEAD").find(".title-sub").text(data.result.resultLEAD.titleSub[0]);
+                        $(".resultLEAD").find(".result-img").attr("src", data.result.resultLEAD.resultImg[0]);
+                        $(".resultLEAD").find(".symptomA li").text(data.result.resultLEAD.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAD.symptomB.length; count++){
+                            $(".resultLEAD .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAD").find(".symptomB li").eq(i).text(data.result.resultLEAD.symptomB[i]);
+                        });
+                        $(".resultLEAD").find(".symptomPart li").text(data.result.resultLEAD.symptomPart[0]);
+                        $(".resultLEAD").find(".symptomText li").text(data.result.resultLEAD.symptomText[0]);
+                        $(".resultLEAD").find(".symptomMedical li").text(data.result.resultLEAD.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB00, .LEAB01')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAE");
+                        $(".resultLEAE").find(".result-title").text(data.result.resultLEAE.resultTitle[0]);
+                        $(".resultLEAE").find(".title-sub").text(data.result.resultLEAE.titleSub[0]);
+                        $(".resultLEAE").find(".result-img").attr("src", data.result.resultLEAE.resultImg[0]);
+                        $(".resultLEAE").find(".symptomA li").text(data.result.resultLEAE.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAE.symptomB.length; count++){
+                            $(".resultLEAE .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAE").find(".symptomB li").eq(i).text(data.result.resultLEAE.symptomB[i]);
+                        });
+                        $(".resultLEAE").find(".symptomPart li").text(data.result.resultLEAE.symptomPart[0]);
+                        $(".resultLEAE").find(".symptomText li").text(data.result.resultLEAE.symptomText[0]);
+                        $(".resultLEAE").find(".symptomMedical li").text(data.result.resultLEAE.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB00, .LEAB01, .LEAB02, .LEAB03, .LEAB04, .LEAB05, .LEAB06')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAF");
+                        $(".resultLEAF").find(".result-title").text(data.result.resultLEAF.resultTitle[0]);
+                        $(".resultLEAF").find(".title-sub").text(data.result.resultLEAF.titleSub[0]);
+                        $(".resultLEAF").find(".result-img").attr("src", data.result.resultLEAF.resultImg[0]);
+                        $(".resultLEAF").find(".symptomA li").text(data.result.resultLEAF.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAF.symptomB.length; count++){
+                            $(".resultLEAF .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAF").find(".symptomB li").eq(i).text(data.result.resultLEAF.symptomB[i]);
+                        });
+                        $(".resultLEAF").find(".symptomPart li").text(data.result.resultLEAF.symptomPart[0]);
+                        $(".resultLEAF").find(".symptomText li").text(data.result.resultLEAF.symptomText[0]);
+                        $(".resultLEAF").find(".symptomMedical li").text(data.result.resultLEAF.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB00, .LEAB01, .LEAB04, .LEAB05, .LEAB06, .LEAB07')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAG");
+                        $(".resultLEAG").find(".result-title").text(data.result.resultLEAG.resultTitle[0]);
+                        $(".resultLEAG").find(".title-sub").text(data.result.resultLEAG.titleSub[0]);
+                        $(".resultLEAG").find(".result-img").attr("src", data.result.resultLEAG.resultImg[0]);
+                        $(".resultLEAG").find(".symptomA li").text(data.result.resultLEAG.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAG.symptomB.length; count++){
+                            $(".resultLEAG .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAG").find(".symptomB li").eq(i).text(data.result.resultLEAG.symptomB[i]);
+                        });
+                        $(".resultLEAG").find(".symptomPart li").text(data.result.resultLEAG.symptomPart[0]);
+                        $(".resultLEAG").find(".symptomText li").text(data.result.resultLEAG.symptomText[0]);
+                        $(".resultLEAG").find(".symptomMedical li").text(data.result.resultLEAG.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB00, .LEAB01, .LEAB04')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAH");
+                        $(".resultLEAH").find(".result-title").text(data.result.resultLEAH.resultTitle[0]);
+                        $(".resultLEAH").find(".title-sub").text(data.result.resultLEAH.titleSub[0]);
+                        $(".resultLEAH").find(".result-img").attr("src", data.result.resultLEAH.resultImg[0]);
+                        $(".resultLEAH").find(".symptomA li").text(data.result.resultLEAH.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAH.symptomB.length; count++){
+                            $(".resultLEAH .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAH").find(".symptomB li").eq(i).text(data.result.resultLEAH.symptomB[i]);
+                        });
+                        $(".resultLEAH").find(".symptomPart li").text(data.result.resultLEAH.symptomPart[0]);
+                        $(".resultLEAH").find(".symptomText li").text(data.result.resultLEAH.symptomText[0]);
+                        $(".resultLEAH").find(".symptomMedical li").text(data.result.resultLEAH.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB08, .LEAB09, .LEAB10, .LEAB11, .LEAB12')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAI");
+                        $(".resultLEAI").find(".result-title").text(data.result.resultLEAI.resultTitle[0]);
+                        $(".resultLEAI").find(".title-sub").text(data.result.resultLEAI.titleSub[0]);
+                        $(".resultLEAI").find(".result-img").attr("src", data.result.resultLEAI.resultImg[0]);
+                        $(".resultLEAI").find(".symptomA li").text(data.result.resultLEAI.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAI.symptomB.length; count++){
+                            $(".resultLEAI .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAI").find(".symptomB li").eq(i).text(data.result.resultLEAI.symptomB[i]);
+                        });
+                        $(".resultLEAI").find(".symptomPart li").text(data.result.resultLEAI.symptomPart[0]);
+                        $(".resultLEAI").find(".symptomText li").text(data.result.resultLEAI.symptomText[0]);
+                        $(".resultLEAI").find(".symptomMedical li").text(data.result.resultLEAI.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB07, .LEAB13, .LEAB14, .LEAB15, .LEAB16')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAJ");
+                        $(".resultLEAJ").find(".result-title").text(data.result.resultLEAJ.resultTitle[0]);
+                        $(".resultLEAJ").find(".title-sub").text(data.result.resultLEAJ.titleSub[0]);
+                        $(".resultLEAJ").find(".result-img").attr("src", data.result.resultLEAJ.resultImg[0]);
+                        $(".resultLEAJ").find(".symptomA li").text(data.result.resultLEAJ.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAJ.symptomB.length; count++){
+                            $(".resultLEAJ .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAJ").find(".symptomB li").eq(i).text(data.result.resultLEAJ.symptomB[i]);
+                        });
+                        $(".resultLEAJ").find(".symptomPart li").text(data.result.resultLEAJ.symptomPart[0]);
+                        $(".resultLEAJ").find(".symptomText li").text(data.result.resultLEAJ.symptomText[0]);
+                        $(".resultLEAJ").find(".symptomMedical li").text(data.result.resultLEAJ.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB13, .LEAB14, .LEAB17, .LEAB18')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAK");
+                        $(".resultLEAK").find(".result-title").text(data.result.resultLEAK.resultTitle[0]);
+                        $(".resultLEAK").find(".title-sub").text(data.result.resultLEAK.titleSub[0]);
+                        $(".resultLEAK").find(".result-img").attr("src", data.result.resultLEAK.resultImg[0]);
+                        $(".resultLEAK").find(".symptomA li").text(data.result.resultLEAK.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAK.symptomB.length; count++){
+                            $(".resultLEAK .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAK").find(".symptomB li").eq(i).text(data.result.resultLEAK.symptomB[i]);
+                        });
+                        $(".resultLEAK").find(".symptomPart li").text(data.result.resultLEAK.symptomPart[0]);
+                        $(".resultLEAK").find(".symptomText li").text(data.result.resultLEAK.symptomText[0]);
+                        $(".resultLEAK").find(".symptomMedical li").text(data.result.resultLEAK.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB02, .LEAB04, .LEAB08, .LEAB11, .LEAB12, .LEAB19')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAL");
+                        $(".resultLEAL").find(".result-title").text(data.result.resultLEAL.resultTitle[0]);
+                        $(".resultLEAL").find(".title-sub").text(data.result.resultLEAL.titleSub[0]);
+                        $(".resultLEAL").find(".result-img").attr("src", data.result.resultLEAL.resultImg[0]);
+                        $(".resultLEAL").find(".symptomA li").text(data.result.resultLEAL.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAL.symptomB.length; count++){
+                            $(".resultLEAL .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAL").find(".symptomB li").eq(i).text(data.result.resultLEAL.symptomB[i]);
+                        });
+                        $(".resultLEAL").find(".symptomPart li").text(data.result.resultLEAL.symptomPart[0]);
+                        $(".resultLEAL").find(".symptomText li").text(data.result.resultLEAL.symptomText[0]);
+                        $(".resultLEAL").find(".symptomMedical li").text(data.result.resultLEAL.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB04, .LEAB05, .LEAB06, .LEAB07, .LEAB20, .LEAB21')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAM");
+                        $(".resultLEAM").find(".result-title").text(data.result.resultLEAM.resultTitle[0]);
+                        $(".resultLEAM").find(".title-sub").text(data.result.resultLEAM.titleSub[0]);
+                        $(".resultLEAM").find(".result-img").attr("src", data.result.resultLEAM.resultImg[0]);
+                        $(".resultLEAM").find(".symptomA li").text(data.result.resultLEAM.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAM.symptomB.length; count++){
+                            $(".resultLEAM .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAM").find(".symptomB li").eq(i).text(data.result.resultLEAM.symptomB[i]);
+                        });
+                        $(".resultLEAM").find(".symptomPart li").text(data.result.resultLEAM.symptomPart[0]);
+                        $(".resultLEAM").find(".symptomText li").text(data.result.resultLEAM.symptomText[0]);
+                        $(".resultLEAM").find(".symptomMedical li").text(data.result.resultLEAM.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.LEAB13, .LEAB14, .LEAB22, .LEAB23')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultLEAN");
+                        $(".resultLEAN").find(".result-title").text(data.result.resultLEAN.resultTitle[0]);
+                        $(".resultLEAN").find(".title-sub").text(data.result.resultLEAN.titleSub[0]);
+                        $(".resultLEAN").find(".result-img").attr("src", data.result.resultLEAN.resultImg[0]);
+                        $(".resultLEAN").find(".symptomA li").text(data.result.resultLEAN.symptomA[0]);
+                        for(var count = 0; count < data.result.resultLEAN.symptomB.length; count++){
+                            $(".resultLEAN .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultLEAN").find(".symptomB li").eq(i).text(data.result.resultLEAN.symptomB[i]);
+                        });
+                        $(".resultLEAN").find(".symptomPart li").text(data.result.resultLEAN.symptomPart[0]);
+                        $(".resultLEAN").find(".symptomText li").text(data.result.resultLEAN.symptomText[0]);
+                        $(".resultLEAN").find(".symptomMedical li").text(data.result.resultLEAN.symptomMedical[0]);
+                    
+                    };
+
+
+                    
+
+
+                    if($(".search").is('.REAA00, .REAA01, .REAA02, .REAA03, .REAA04, .REAA05, .REAA06')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultREAA");
+                        $(".resultREAA").find(".result-title").text(data.result.resultREAA.resultTitle[0]);
+                        $(".resultREAA").find(".title-sub").text(data.result.resultREAA.titleSub[0]);
+                        $(".resultREAA").find(".result-img").attr("src", data.result.resultREAA.resultImg[0]);
+                        $(".resultREAA").find(".symptomA li").text(data.result.resultREAA.symptomA[0]);
+                        for(var count = 0; count < data.result.resultREAA.symptomB.length; count++){
+                            $(".resultREAA .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultREAA").find(".symptomB li").eq(i).text(data.result.resultREAA.symptomB[i]);
+                        });
+                        $(".resultREAA").find(".symptomPart li").text(data.result.resultREAA.symptomPart[0]);
+                        $(".resultREAA").find(".symptomText li").text(data.result.resultREAA.symptomText[0]);
+                        $(".resultREAA").find(".symptomMedical li").text(data.result.resultREAA.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.REAB00, .REAB01, .REAB02, .REAB03, .REAB04, .REAB05')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultREAB");
+                        $(".resultREAB").find(".result-title").text(data.result.resultREAB.resultTitle[0]);
+                        $(".resultREAB").find(".title-sub").text(data.result.resultREAB.titleSub[0]);
+                        $(".resultREAB").find(".result-img").attr("src", data.result.resultREAB.resultImg[0]);
+                        $(".resultREAB").find(".symptomA li").text(data.result.resultREAB.symptomA[0]);
+                        for(var count = 0; count < data.result.resultREAB.symptomB.length; count++){
+                            $(".resultREAB .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultREAB").find(".symptomB li").eq(i).text(data.result.resultREAB.symptomB[i]);
+                        });
+                        $(".resultREAB").find(".symptomPart li").text(data.result.resultREAB.symptomPart[0]);
+                        $(".resultREAB").find(".symptomText li").text(data.result.resultREAB.symptomText[0]);
+                        $(".resultREAB").find(".symptomMedical li").text(data.result.resultREAB.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.REAA06, .REAA07, .REAA08')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultREAB");
+                        $(".resultREAB").find(".result-title").text(data.result.resultREAB.resultTitle[0]);
+                        $(".resultREAB").find(".title-sub").text(data.result.resultREAB.titleSub[0]);
+                        $(".resultREAB").find(".result-img").attr("src", data.result.resultREAB.resultImg[0]);
+                        $(".resultREAB").find(".symptomA li").text(data.result.resultREAB.symptomA[0]);
+                        for(var count = 0; count < data.result.resultREAB.symptomB.length; count++){
+                            $(".resultREAB .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultREAB").find(".symptomB li").eq(i).text(data.result.resultREAB.symptomB[i]);
+                        });
+                        $(".resultREAB").find(".symptomPart li").text(data.result.resultREAB.symptomPart[0]);
+                        $(".resultREAB").find(".symptomText li").text(data.result.resultREAB.symptomText[0]);
+                        $(".resultREAB").find(".symptomMedical li").text(data.result.resultREAB.symptomMedical[0]);
+                    
+                    };
+
+
+
+
+
+                    if($(".search").is('.DIAA00, .DIAA01, .DIAA02, .DIAA03, .DIAA04, .DIAA05, .DIAA06')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAA");
+                        $(".resultDIAA").find(".result-title").text(data.result.resultDIAA.resultTitle[0]);
+                        $(".resultDIAA").find(".title-sub").text(data.result.resultDIAA.titleSub[0]);
+                        $(".resultDIAA").find(".result-img").attr("src", data.result.resultDIAA.resultImg[0]);
+                        $(".resultDIAA").find(".symptomA li").text(data.result.resultDIAA.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAA.symptomB.length; count++){
+                            $(".resultDIAA .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAA").find(".symptomB li").eq(i).text(data.result.resultDIAA.symptomB[i]);
+                        });
+                        $(".resultDIAA").find(".symptomPart li").text(data.result.resultDIAA.symptomPart[0]);
+                        $(".resultDIAA").find(".symptomText li").text(data.result.resultDIAA.symptomText[0]);
+                        $(".resultDIAA").find(".symptomMedical li").text(data.result.resultDIAA.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAA00, .DIAA01, .DIAA02, .DIAA03, .DIAA04, .DIAA05')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAB");
+                        $(".resultDIAB").find(".result-title").text(data.result.resultDIAB.resultTitle[0]);
+                        $(".resultDIAB").find(".title-sub").text(data.result.resultDIAB.titleSub[0]);
+                        $(".resultDIAB").find(".result-img").attr("src", data.result.resultDIAB.resultImg[0]);
+                        $(".resultDIAB").find(".symptomA li").text(data.result.resultDIAB.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAB.symptomB.length; count++){
+                            $(".resultDIAB .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAB").find(".symptomB li").eq(i).text(data.result.resultDIAB.symptomB[i]);
+                        });
+                        $(".resultDIAB").find(".symptomPart li").text(data.result.resultDIAB.symptomPart[0]);
+                        $(".resultDIAB").find(".symptomText li").text(data.result.resultDIAB.symptomText[0]);
+                        $(".resultDIAB").find(".symptomMedical li").text(data.result.resultDIAB.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAA00, .DIAA01, .DIAA02, .DIAA03, .DIAA06, .DIAA07, .DIAA08, .DIAA09, .DIAA17')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAC");
+                        $(".resultDIAC").find(".result-title").text(data.result.resultDIAC.resultTitle[0]);
+                        $(".resultDIAC").find(".title-sub").text(data.result.resultDIAC.titleSub[0]);
+                        $(".resultDIAC").find(".result-img").attr("src", data.result.resultDIAC.resultImg[0]);
+                        $(".resultDIAC").find(".symptomA li").text(data.result.resultDIAC.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAC.symptomB.length; count++){
+                            $(".resultDIAC .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAC").find(".symptomB li").eq(i).text(data.result.resultDIAC.symptomB[i]);
+                        });
+                        $(".resultDIAC").find(".symptomPart li").text(data.result.resultDIAC.symptomPart[0]);
+                        $(".resultDIAC").find(".symptomText li").text(data.result.resultDIAC.symptomText[0]);
+                        $(".resultDIAC").find(".symptomMedical li").text(data.result.resultDIAC.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAA00, .DIAA01, .DIAA02, .DIAA03, .REAA04, .REAA10, .REAA11')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAD");
+                        $(".resultDIAD").find(".result-title").text(data.result.resultDIAD.resultTitle[0]);
+                        $(".resultDIAD").find(".title-sub").text(data.result.resultDIAD.titleSub[0]);
+                        $(".resultDIAD").find(".result-img").attr("src", data.result.resultDIAD.resultImg[0]);
+                        $(".resultDIAD").find(".symptomA li").text(data.result.resultDIAD.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAD.symptomB.length; count++){
+                            $(".resultDIAD .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAD").find(".symptomB li").eq(i).text(data.result.resultDIAD.symptomB[i]);
+                        });
+                        $(".resultDIAD").find(".symptomPart li").text(data.result.resultDIAD.symptomPart[0]);
+                        $(".resultDIAD").find(".symptomText li").text(data.result.resultDIAD.symptomText[0]);
+                        $(".resultDIAD").find(".symptomMedical li").text(data.result.resultDIAD.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAA00, .DIAA01, .DIAA02, .DIAA03, .REAA04, .DIAA09, .REAA12')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAE");
+                        $(".resultDIAE").find(".result-title").text(data.result.resultDIAE.resultTitle[0]);
+                        $(".resultDIAE").find(".title-sub").text(data.result.resultDIAE.titleSub[0]);
+                        $(".resultDIAE").find(".result-img").attr("src", data.result.resultDIAE.resultImg[0]);
+                        $(".resultDIAE").find(".symptomA li").text(data.result.resultDIAE.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAE.symptomB.length; count++){
+                            $(".resultDIAE .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAE").find(".symptomB li").eq(i).text(data.result.resultDIAE.symptomB[i]);
+                        });
+                        $(".resultDIAE").find(".symptomPart li").text(data.result.resultDIAE.symptomPart[0]);
+                        $(".resultDIAE").find(".symptomText li").text(data.result.resultDIAE.symptomText[0]);
+                        $(".resultDIAE").find(".symptomMedical li").text(data.result.resultDIAE.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAA00, .DIAA01, .DIAA02, .DIAA03, .REAA04, .DIAA05, .REAA12')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAF");
+                        $(".resultDIAF").find(".result-title").text(data.result.resultDIAF.resultTitle[0]);
+                        $(".resultDIAF").find(".title-sub").text(data.result.resultDIAF.titleSub[0]);
+                        $(".resultDIAF").find(".result-img").attr("src", data.result.resultDIAF.resultImg[0]);
+                        $(".resultDIAF").find(".symptomA li").text(data.result.resultDIAF.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAF.symptomB.length; count++){
+                            $(".resultDIAF .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAF").find(".symptomB li").eq(i).text(data.result.resultDIAF.symptomB[i]);
+                        });
+                        $(".resultDIAF").find(".symptomPart li").text(data.result.resultDIAF.symptomPart[0]);
+                        $(".resultDIAF").find(".symptomText li").text(data.result.resultDIAF.symptomText[0]);
+                        $(".resultDIAF").find(".symptomMedical li").text(data.result.resultDIAF.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAA00, .DIAA01, .DIAA02, .DIAA03, .REAA04')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAG");
+                        $(".resultDIAG").find(".result-title").text(data.result.resultDIAG.resultTitle[0]);
+                        $(".resultDIAG").find(".title-sub").text(data.result.resultDIAG.titleSub[0]);
+                        $(".resultDIAG").find(".result-img").attr("src", data.result.resultDIAG.resultImg[0]);
+                        $(".resultDIAG").find(".symptomA li").text(data.result.resultDIAG.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAG.symptomB.length; count++){
+                            $(".resultDIAG .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAG").find(".symptomB li").eq(i).text(data.result.resultDIAG.symptomB[i]);
+                        });
+                        $(".resultDIAG").find(".symptomPart li").text(data.result.resultDIAG.symptomPart[0]);
+                        $(".resultDIAG").find(".symptomText li").text(data.result.resultDIAG.symptomText[0]);
+                        $(".resultDIAG").find(".symptomMedical li").text(data.result.resultDIAG.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAA02, .DIAA04, .DIAA12, .DIAA13')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAH");
+                        $(".resultDIAH").find(".result-title").text(data.result.resultDIAH.resultTitle[0]);
+                        $(".resultDIAH").find(".title-sub").text(data.result.resultDIAH.titleSub[0]);
+                        $(".resultDIAH").find(".result-img").attr("src", data.result.resultDIAH.resultImg[0]);
+                        $(".resultDIAH").find(".symptomA li").text(data.result.resultDIAH.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAH.symptomB.length; count++){
+                            $(".resultDIAH .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAH").find(".symptomB li").eq(i).text(data.result.resultDIAH.symptomB[i]);
+                        });
+                        $(".resultDIAH").find(".symptomPart li").text(data.result.resultDIAH.symptomPart[0]);
+                        $(".resultDIAH").find(".symptomText li").text(data.result.resultDIAH.symptomText[0]);
+                        $(".resultDIAH").find(".symptomMedical li").text(data.result.resultDIAH.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.REAA02, .REAA04, .REAA06, .REAA12, .REAA14')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAI");
+                        $(".resultDIAI").find(".result-title").text(data.result.resultDIAI.resultTitle[0]);
+                        $(".resultDIAI").find(".title-sub").text(data.result.resultDIAI.titleSub[0]);
+                        $(".resultDIAI").find(".result-img").attr("src", data.result.resultDIAI.resultImg[0]);
+                        $(".resultDIAI").find(".symptomA li").text(data.result.resultDIAI.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAI.symptomB.length; count++){
+                            $(".resultDIAI .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAI").find(".symptomB li").eq(i).text(data.result.resultDIAI.symptomB[i]);
+                        });
+                        $(".resultDIAI").find(".symptomPart li").text(data.result.resultDIAI.symptomPart[0]);
+                        $(".resultDIAI").find(".symptomText li").text(data.result.resultDIAI.symptomText[0]);
+                        $(".resultDIAI").find(".symptomMedical li").text(data.result.resultDIAI.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.REAA02, .REAA04, .REAA12, .REAA15, .REAA16')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAJ");
+                        $(".resultDIAJ").find(".result-title").text(data.result.resultDIAJ.resultTitle[0]);
+                        $(".resultDIAJ").find(".title-sub").text(data.result.resultDIAJ.titleSub[0]);
+                        $(".resultDIAJ").find(".result-img").attr("src", data.result.resultDIAJ.resultImg[0]);
+                        $(".resultDIAJ").find(".symptomA li").text(data.result.resultDIAJ.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAJ.symptomB.length; count++){
+                            $(".resultDIAJ .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAJ").find(".symptomB li").eq(i).text(data.result.resultDIAJ.symptomB[i]);
+                        });
+                        $(".resultDIAJ").find(".symptomPart li").text(data.result.resultDIAJ.symptomPart[0]);
+                        $(".resultDIAJ").find(".symptomText li").text(data.result.resultDIAJ.symptomText[0]);
+                        $(".resultDIAJ").find(".symptomMedical li").text(data.result.resultDIAJ.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.REAA02, .REAA03, .REAA04, .REAA09, .REAA12, .REAA18')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAK");
+                        $(".resultDIAK").find(".result-title").text(data.result.resultDIAK.resultTitle[0]);
+                        $(".resultDIAK").find(".title-sub").text(data.result.resultDIAK.titleSub[0]);
+                        $(".resultDIAK").find(".result-img").attr("src", data.result.resultDIAK.resultImg[0]);
+                        $(".resultDIAK").find(".symptomA li").text(data.result.resultDIAK.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAK.symptomB.length; count++){
+                            $(".resultDIAK .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAK").find(".symptomB li").eq(i).text(data.result.resultDIAK.symptomB[i]);
+                        });
+                        $(".resultDIAK").find(".symptomPart li").text(data.result.resultDIAK.symptomPart[0]);
+                        $(".resultDIAK").find(".symptomText li").text(data.result.resultDIAK.symptomText[0]);
+                        $(".resultDIAK").find(".symptomMedical li").text(data.result.resultDIAK.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB00, .DIAB01, .DIAB02, .DIAB03, .DIAB04, .DIAB05, .DIAB06, .DIAB07')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAL");
+                        $(".resultDIAL").find(".result-title").text(data.result.resultDIAL.resultTitle[0]);
+                        $(".resultDIAL").find(".title-sub").text(data.result.resultDIAL.titleSub[0]);
+                        $(".resultDIAL").find(".result-img").attr("src", data.result.resultDIAL.resultImg[0]);
+                        $(".resultDIAL").find(".symptomA li").text(data.result.resultDIAL.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAL.symptomB.length; count++){
+                            $(".resultDIAL .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAL").find(".symptomB li").eq(i).text(data.result.resultDIAL.symptomB[i]);
+                        });
+                        $(".resultDIAL").find(".symptomPart li").text(data.result.resultDIAL.symptomPart[0]);
+                        $(".resultDIAL").find(".symptomText li").text(data.result.resultDIAL.symptomText[0]);
+                        $(".resultDIAL").find(".symptomMedical li").text(data.result.resultDIAL.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB12, .DIAB13')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAM");
+                        $(".resultDIAM").find(".result-title").text(data.result.resultDIAM.resultTitle[0]);
+                        $(".resultDIAM").find(".title-sub").text(data.result.resultDIAM.titleSub[0]);
+                        $(".resultDIAM").find(".result-img").attr("src", data.result.resultDIAM.resultImg[0]);
+                        $(".resultDIAM").find(".symptomA li").text(data.result.resultDIAM.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAM.symptomB.length; count++){
+                            $(".resultDIAM .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAM").find(".symptomB li").eq(i).text(data.result.resultDIAM.symptomB[i]);
+                        });
+                        $(".resultDIAM").find(".symptomPart li").text(data.result.resultDIAM.symptomPart[0]);
+                        $(".resultDIAM").find(".symptomText li").text(data.result.resultDIAM.symptomText[0]);
+                        $(".resultDIAM").find(".symptomMedical li").text(data.result.resultDIAM.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB12, .DIAB13, .DIAB14, .DIAB15, .DIAB16, .DIAB17')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAN");
+                        $(".resultDIAN").find(".result-title").text(data.result.resultDIAN.resultTitle[0]);
+                        $(".resultDIAN").find(".title-sub").text(data.result.resultDIAN.titleSub[0]);
+                        $(".resultDIAN").find(".result-img").attr("src", data.result.resultDIAN.resultImg[0]);
+                        $(".resultDIAN").find(".symptomA li").text(data.result.resultDIAN.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAN.symptomB.length; count++){
+                            $(".resultDIAN .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAN").find(".symptomB li").eq(i).text(data.result.resultDIAN.symptomB[i]);
+                        });
+                        $(".resultDIAN").find(".symptomPart li").text(data.result.resultDIAN.symptomPart[0]);
+                        $(".resultDIAN").find(".symptomText li").text(data.result.resultDIAN.symptomText[0]);
+                        $(".resultDIAN").find(".symptomMedical li").text(data.result.resultDIAN.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB12, .DIAB13')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAO");
+                        $(".resultDIAO").find(".result-title").text(data.result.resultDIAO.resultTitle[0]);
+                        $(".resultDIAO").find(".title-sub").text(data.result.resultDIAO.titleSub[0]);
+                        $(".resultDIAO").find(".result-img").attr("src", data.result.resultDIAO.resultImg[0]);
+                        $(".resultDIAO").find(".symptomA li").text(data.result.resultDIAO.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAO.symptomB.length; count++){
+                            $(".resultDIAO .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAO").find(".symptomB li").eq(i).text(data.result.resultDIAO.symptomB[i]);
+                        });
+                        $(".resultDIAO").find(".symptomPart li").text(data.result.resultDIAO.symptomPart[0]);
+                        $(".resultDIAO").find(".symptomText li").text(data.result.resultDIAO.symptomText[0]);
+                        $(".resultDIAO").find(".symptomMedical li").text(data.result.resultDIAO.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB13, .DIAB18, .DIAB19')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAP");
+                        $(".resultDIAP").find(".result-title").text(data.result.resultDIAP.resultTitle[0]);
+                        $(".resultDIAP").find(".title-sub").text(data.result.resultDIAP.titleSub[0]);
+                        $(".resultDIAP").find(".result-img").attr("src", data.result.resultDIAP.resultImg[0]);
+                        $(".resultDIAP").find(".symptomA li").text(data.result.resultDIAP.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAP.symptomB.length; count++){
+                            $(".resultDIAP .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAP").find(".symptomB li").eq(i).text(data.result.resultDIAP.symptomB[i]);
+                        });
+                        $(".resultDIAP").find(".symptomPart li").text(data.result.resultDIAP.symptomPart[0]);
+                        $(".resultDIAP").find(".symptomText li").text(data.result.resultDIAP.symptomText[0]);
+                        $(".resultDIAP").find(".symptomMedical li").text(data.result.resultDIAP.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB13, .DIAB20')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAQ");
+                        $(".resultDIAQ").find(".result-title").text(data.result.resultDIAQ.resultTitle[0]);
+                        $(".resultDIAQ").find(".title-sub").text(data.result.resultDIAQ.titleSub[0]);
+                        $(".resultDIAQ").find(".result-img").attr("src", data.result.resultDIAQ.resultImg[0]);
+                        $(".resultDIAQ").find(".symptomA li").text(data.result.resultDIAQ.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAQ.symptomB.length; count++){
+                            $(".resultDIAQ .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAQ").find(".symptomB li").eq(i).text(data.result.resultDIAQ.symptomB[i]);
+                        });
+                        $(".resultDIAQ").find(".symptomPart li").text(data.result.resultDIAQ.symptomPart[0]);
+                        $(".resultDIAQ").find(".symptomText li").text(data.result.resultDIAQ.symptomText[0]);
+                        $(".resultDIAQ").find(".symptomMedical li").text(data.result.resultDIAQ.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB12, .DIAB13, .DIAB20, .DIAB21')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAR");
+                        $(".resultDIAR").find(".result-title").text(data.result.resultDIAR.resultTitle[0]);
+                        $(".resultDIAR").find(".title-sub").text(data.result.resultDIAR.titleSub[0]);
+                        $(".resultDIAR").find(".result-img").attr("src", data.result.resultDIAR.resultImg[0]);
+                        $(".resultDIAR").find(".symptomA li").text(data.result.resultDIAR.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAR.symptomB.length; count++){
+                            $(".resultDIAR .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAR").find(".symptomB li").eq(i).text(data.result.resultDIAR.symptomB[i]);
+                        });
+                        $(".resultDIAR").find(".symptomPart li").text(data.result.resultDIAR.symptomPart[0]);
+                        $(".resultDIAR").find(".symptomText li").text(data.result.resultDIAR.symptomText[0]);
+                        $(".resultDIAR").find(".symptomMedical li").text(data.result.resultDIAR.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB13, .DIAB18, .DIAB22')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAS");
+                        $(".resultDIAS").find(".result-title").text(data.result.resultDIAS.resultTitle[0]);
+                        $(".resultDIAS").find(".title-sub").text(data.result.resultDIAS.titleSub[0]);
+                        $(".resultDIAS").find(".result-img").attr("src", data.result.resultDIAS.resultImg[0]);
+                        $(".resultDIAS").find(".symptomA li").text(data.result.resultDIAS.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAS.symptomB.length; count++){
+                            $(".resultDIAS .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAS").find(".symptomB li").eq(i).text(data.result.resultDIAS.symptomB[i]);
+                        });
+                        $(".resultDIAS").find(".symptomPart li").text(data.result.resultDIAS.symptomPart[0]);
+                        $(".resultDIAS").find(".symptomText li").text(data.result.resultDIAS.symptomText[0]);
+                        $(".resultDIAS").find(".symptomMedical li").text(data.result.resultDIAS.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB05, .DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB13, .DIAB20, .DIAB22')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAT");
+                        $(".resultDIAT").find(".result-title").text(data.result.resultDIAT.resultTitle[0]);
+                        $(".resultDIAT").find(".title-sub").text(data.result.resultDIAT.titleSub[0]);
+                        $(".resultDIAT").find(".result-img").attr("src", data.result.resultDIAT.resultImg[0]);
+                        $(".resultDIAT").find(".symptomA li").text(data.result.resultDIAT.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAT.symptomB.length; count++){
+                            $(".resultDIAT .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAT").find(".symptomB li").eq(i).text(data.result.resultDIAT.symptomB[i]);
+                        });
+                        $(".resultDIAT").find(".symptomPart li").text(data.result.resultDIAT.symptomPart[0]);
+                        $(".resultDIAT").find(".symptomText li").text(data.result.resultDIAT.symptomText[0]);
+                        $(".resultDIAT").find(".symptomMedical li").text(data.result.resultDIAT.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB12, .DIAB13, .DIAB22, .DIAB23')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAU");
+                        $(".resultDIAU").find(".result-title").text(data.result.resultDIAU.resultTitle[0]);
+                        $(".resultDIAU").find(".title-sub").text(data.result.resultDIAU.titleSub[0]);
+                        $(".resultDIAU").find(".result-img").attr("src", data.result.resultDIAU.resultImg[0]);
+                        $(".resultDIAU").find(".symptomA li").text(data.result.resultDIAU.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAU.symptomB.length; count++){
+                            $(".resultDIAU .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAU").find(".symptomB li").eq(i).text(data.result.resultDIAU.symptomB[i]);
+                        });
+                        $(".resultDIAU").find(".symptomPart li").text(data.result.resultDIAU.symptomPart[0]);
+                        $(".resultDIAU").find(".symptomText li").text(data.result.resultDIAU.symptomText[0]);
+                        $(".resultDIAU").find(".symptomMedical li").text(data.result.resultDIAU.symptomMedical[0]);
+                    
+                    };
+
+                    if($(".search").is('.DIAB08, .DIAB09, .DIAB10, .DIAB11, .DIAB13, .DIAB22, .DIAB24, .DIAB25')){
+
+                        $(".result-wrap").eq(0).clone().appendTo(".result-info").addClass("resultDIAV");
+                        $(".resultDIAV").find(".result-title").text(data.result.resultDIAV.resultTitle[0]);
+                        $(".resultDIAV").find(".title-sub").text(data.result.resultDIAV.titleSub[0]);
+                        $(".resultDIAV").find(".result-img").attr("src", data.result.resultDIAV.resultImg[0]);
+                        $(".resultDIAV").find(".symptomA li").text(data.result.resultDIAV.symptomA[0]);
+                        for(var count = 0; count < data.result.resultDIAV.symptomB.length; count++){
+                            $(".resultDIAV .symptomB ul").append('<li></li>');
+                        };
+                        $(".symptomB li").each(function(){
+                            i = $(this).index();
+                            $(".resultDIAV").find(".symptomB li").eq(i).text(data.result.resultDIAV.symptomB[i]);
+                        });
+                        $(".resultDIAV").find(".symptomPart li").text(data.result.resultDIAV.symptomPart[0]);
+                        $(".resultDIAV").find(".symptomText li").text(data.result.resultDIAV.symptomText[0]);
+                        $(".resultDIAV").find(".symptomMedical li").text(data.result.resultDIAV.symptomMedical[0]);
                     
                     };
                     
