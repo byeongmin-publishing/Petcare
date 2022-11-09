@@ -5,6 +5,12 @@
     src: url('../font/CBRegular.ttf');
 }
 
+@font-face {
+    font-family: "result";
+    src: url('../font/KoPubWorldDotumLight.ttf');
+}
+
+
 
 
 /* section */
@@ -119,6 +125,7 @@ ul{
 }
 li{
     font-size: 16px;
+    font-size: 'result';
     line-height: 22px;
     word-break: keep-all;
 }
