@@ -2,17 +2,17 @@
 
 $(".option1").change(function(){
 
-    let searchBtn = $(".search");       //기존 input에서 체크를 하고 항목을 바꿨을때 초기화
-    searchBtn.removeClass();        //증상찾기 초기화
-    searchBtn.addClass("search");       //증상찾기 초기화
-    arr.splice(0);      //증상 코드 초기화
-    let option1Index = $(this).val();       //option2 이벤트를 위한 option1 value 가져오기
+    let searchBtn = $(".search");       
+    searchBtn.removeClass();        
+    searchBtn.addClass("search");       
+    arr.splice(0);      
+    let option1Index = $(this).val();       
 
     $.ajax({
         type : "GET",
         url:"./js/select-data.json",
-        dataType: "Json",       //제이슨 연결
-        success:function(data){     //성공했을때
+        dataType: "Json",       
+        success:function(data){     
 
 
 
@@ -20,30 +20,30 @@ $(".option1").change(function(){
 
             // option2 갯수, 텍스트 설정
 
-            if(option1Index == 1){      //option1을 눌렀을때 - 귀
-                $(".option2 option").remove();      //모든 option 삭제
-                for(var count = 0; count < data.optionEar.length; count++){       //귀 다음 선택지 갯수만큼 반복
-                    $(".option2").append('<option></option>');      //옵션 생성
+            if(option1Index == 1){      
+                $(".option2 option").remove();      
+                for(var count = 0; count < data.optionEar.length; count++){       
+                    $(".option2").append('<option></option>');     
                 };
-                $(".option2 option").each(function(){       //귀 다음 선택지 갯수만큼 반복
-                    i = $(this).index();        //option2의 수 구하기
-                    $(".option2 option").eq(i).text(data.optionEar[i]).val(i);      //option2 option에 텍스트 생성
+                $(".option2 option").each(function(){      
+                    i = $(this).index();        
+                    $(".option2 option").eq(i).text(data.optionEar[i]).val(i);      
                 });
-                $(".option2 option").eq(0).attr("disabled", true);      //option2의 첫번째 option은 선택X
+                $(".option2 option").eq(0).attr("disabled", true);      
                 
                 
 
                 // option2 변경 이벤트
 
-                $(".option2").change(function(){        //option2 눌렀을 때
+                $(".option2").change(function(){        
 
-                    searchBtn.removeClass();        //증상찾기 초기화
-                    searchBtn.addClass("search");       //증상찾기 초기화
-                    arr.splice(0);      //증상 코드 초기화
-                    let option2Index = $(this).val();       //옵션2의 번호 구하기
-                    $(".main-logo").css("width", "150px");      //로고 작아지기
+                    searchBtn.removeClass();        
+                    searchBtn.addClass("search");       
+                    arr.splice(0);      
+                    let option2Index = $(this).val();       
+                    $(".main-logo").css("width", "150px");      
 
-                    if(option2Index == 1){      //option2에서 첫번째 항목 눌렀을 때
+                    if(option2Index == 1){      
                         $(".option3-checkbox").remove();    
                         for(var count = 0; count < data.ear.option2A.option3.length; count++){
                             $(".option3").append('<div class="option3-checkbox"></div>');
