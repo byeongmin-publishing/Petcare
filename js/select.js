@@ -715,50 +715,37 @@ $(".option1").change(function(){
 
 
 
-var arr = []; // 클릭한 값을 담을 배열을 변수로 넣기
+var arr = [];
+$(document).on("click", "input", function() { 
+    if($(this).is(":checked")){ 
 
-$(document).on("click", "input", function() { //input을 눌렀을때
+        var symptomCode = $(this).parent(".option3-checkbox").attr("id"); 
+        symptomSearch(arr, symptomCode); 
+        console.log(arr); 
 
-    if($(this).is(":checked")){ //input이 체크가 된다면
-
-        var symptomCode = $(this).parent(".option3-checkbox").attr("id"); //.option3-checkbox의 아이디를 추출(증상코드)
-        symptomSearch(arr, symptomCode); //symptomSearch 실행
-        console.log(arr); //console에 선택된 증상코드
-
-    }else if($(this).not(':checked')){ //input이 체크를 뺀다면
-
-        var symptomCode = $(this).parent(".option3-checkbox").attr("id"); //.option3-checkbox의 아이디를 추출(증상코드)
-        symptomSearch2(arr, symptomCode); //symptomSearch2 실행
-        console.log(arr); //console에 선택된 증상코드
-
+    }else if($(this).not(':checked')){ 
+        var symptomCode = $(this).parent(".option3-checkbox").attr("id"); 
+        symptomSearch2(arr, symptomCode); 
+        console.log(arr); 
     };
 });
 
 function symptomSearch(array, val) { //symptomSearch
-
-    array.push(val); // 값이 없다면 배열의 마지막에 추가
-    $(".search").addClass(val); //증상 찾기 버튼에 증상코드 추가
-
+    array.push(val); 
+    $(".search").addClass(val); 
 };
 function symptomSearch2(array, val) { //symptomSearch2
-
-    arr = array.filter((element) => element !== val); //선택된 증상코드 제거
-    $(".search").removeClass(val); //증상 찾기 버튼에 증상코드 제거
+    arr = array.filter((element) => element !== val); 
+    $(".search").removeClass(val); 
 };
 
 
 
 
-
-// 증상찾기 이벤트 
-
-$(".search").click(function(e){ //눌렀을때
-
-    if(arr == ""){  //증상을 안눌렀을때
-
-        alert("추가 증상을 선택해주세요");  //나오는 알림
-
-    }else{  //증상을 눌렀을때
+$(".search").click(function(e){ 
+    if(arr == ""){  
+        alert("추가 증상을 선택해주세요");  
+    }else{  
 
         e.preventDefault();
         $("#search").css("display", "flex");
@@ -768,8 +755,6 @@ $(".search").click(function(e){ //눌렀을때
             type : "GET",
             url:"./js/result-data.json",
             dataType: "Json",  
-
-
             success:function(data){
 
                 // function resultFnc(code){
@@ -787,7 +772,6 @@ $(".search").click(function(e){ //눌렀을때
                 //     $(".symptomPart li").text(data.code.symptomPart[0]);
                 //     $(".symptomText li").text(data.code.symptomText[0]);
                 //     $(".symptomMedical li").text(data.code.symptomMedical[0]);
-
                 // };
 
                     if($(".search").is('.EAAA00, .EAAA01, .EAAA02, .EAAA03, .EAAA04')){
